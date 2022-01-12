@@ -120,26 +120,28 @@ var endGame = function () {
 }
 
 var shop = function() {
-    var shop0ptionPrompt = window.prompt ("Would you like to REFILL your health, UPGRADE your attack, or LEAVE?");
+    var shopOptionPrompt = window.prompt (
+    "Would you like to REFILL your health, UPGRADE your attack, or LEAVE? Please enter 1 for REFILL, 2 for UPGRADE, or 3 to LEAVE."
+    );
 
-    switch (shop0ptionPrompt) {
-        case "REFILL": //New case
-        case "refill":
+    shopOptionPrompt = parseInt(shopOptionPrompt);
+    switch (shopOptionPrompt) {
+        case 1:
         playerInfo.refillHealth();
-            break;
+        break;
 
-        case "UPGRADE": //New case
-        case "upgrade":
+        case 2:
         playerInfo.upgradeAttack();
-            break;
+        break;
 
-        case "LEAVE": //New case
-        case "leave":
-            window.alert("Leaving the store.");
-            break;
+        case 3:
+        window.alert("Leaving the store.");
+        break;
+
         default:
-            window.alert("You did not pick a valid option. Try again.");
-            break;
+        window.alert("You did not pick a valid option. Try again.");
+        shop();
+        break;
     }
 };
 
@@ -209,5 +211,3 @@ console.log(enemyInfo[0]['attack']);
 
 //start the game when the page loads
 startGame();
-
-window.alert("Welcome to Robot Gladiators!" + (i + 1));
